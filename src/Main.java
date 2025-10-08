@@ -2,17 +2,31 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> arrayNumeros = new ArrayList<>();
-        arrayNumeros.add(346);
-        arrayNumeros.add(8498);
-        arrayNumeros.add(12543);
-        arrayNumeros.add(35342);
-        arrayNumeros.add(2135);
-        arrayNumeros.add(578);
-        arrayNumeros.add(395349);
-        arrayNumeros.add(436547);
-        arrayNumeros.add(21545);
-        arrayNumeros.add(55486);
-    }
+        ArrayList<Integer> arrayNumerosOriginal = new ArrayList<>();
+        arrayNumerosOriginal.add(346);
+        arrayNumerosOriginal.add(8498);
+        arrayNumerosOriginal.add(12543);
+        arrayNumerosOriginal.add(35342);
+        arrayNumerosOriginal.add(2135);
+        arrayNumerosOriginal.add(578);
+        arrayNumerosOriginal.add(395349);
+        arrayNumerosOriginal.add(436547);
+        arrayNumerosOriginal.add(21545);
+        arrayNumerosOriginal.add(55486);
 
+
+        System.out.println("Iniciando Bubble Sort...");
+
+        Bubble bubbleThread = new Bubble(arrayNumerosOriginal);
+        Selection selectionThread = new Selection(arrayNumerosOriginal);
+        Insertion insertionThread = new Insertion(arrayNumerosOriginal);
+
+        bubbleThread.start();
+        selectionThread.start();
+        insertionThread.start();
+
+        System.out.println("\nResultado Final");
+        System.out.println("Bubble Sort tardó: " + bubbleThread.tiempoEjecucion + " ms");
+
+    }
 }

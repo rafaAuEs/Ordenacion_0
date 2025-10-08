@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SortingThread extends Thread{
+public abstract class SortingThread extends Thread{
     public ArrayList<Integer> arrayNumeros;
     public String nombreAlgoritmo;
     public long tiempoEjecucion;
