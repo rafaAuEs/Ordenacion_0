@@ -1,23 +1,31 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Bubble extends SortingThread {
+public class Bubble extends Thread {
 
-    public Bubble(ArrayList<Integer> originalArray) {
-        super(originalArray, "Bubble");
+    public int[] arrayNumeros;
+    public Bubble(int[] arrayNumeros) {
+        this.arrayNumeros=arrayNumeros;
     }
-
     @Override
-    public void ordenar() {
-        int n = arrayNumeros.size();
+    public void run() {
+        long tiempoInicial = System.nanoTime();
+        System.out.println("Empezo a correr Bubble");
+
+        int n = arrayNumeros.length;
 
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (arrayNumeros.get(j) > arrayNumeros.get(j + 1)) {
-                    int temp = arrayNumeros.get(j);
-                    arrayNumeros.set(j, arrayNumeros.get(j + 1));
-                    arrayNumeros.set(j + 1, temp);
+                if (arrayNumeros[j] > arrayNumeros[j + 1]) {
+                    int temp = arrayNumeros[j];
+                    arrayNumeros[j]=arrayNumeros[j + 1];
+                    arrayNumeros[j + 1]=temp;
                 }
             }
         }
+        long tiempoFinal = System.nanoTime();
+        long duracionSegundos = (tiempoFinal- tiempoInicial)/1000000;
+        System.out.println("Bubble Termino de ordenar Duracion en segundos: " + duracionSegundos);
+        System.out.println("Lista: " + Arrays.toString(arrayNumeros)+"\n");
     }
 }
